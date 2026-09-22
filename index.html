@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>PHOENIX RADIO — Pakistan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --bg:#050505;
+    --panel:#0c0c0d;
+    --line:rgba(255,255,255,.08);
+    --text:#f5f5f5;
+    --muted:#85858d;
+    --orange:#ff4d00;
+    --orange2:#ff7a00;
+    --purple:#8b2cff;
+    --green:#24e58a;
+    --red:#ff3f5f;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% -10%,rgba(255,77,0,.12),transparent 30%),
+        radial-gradient(circle at 90% 10%,rgba(139,44,255,.10),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+    background-size:35px 35px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+    -webkit-mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.92);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    min-height:70px;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:Orbitron,sans-serif;
+    font-weight:900;
+    letter-spacing:1px;
+    white-space:nowrap;
+}
+
+.logo-mark{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--orange),var(--purple));
+    box-shadow:
+        0 0 25px rgba(255,77,0,.25),
+        inset 0 0 15px rgba(255,255,255,.15);
+}
+
+.logo-mark i{
+    font-size:17px;
+}
+
+.logo span{
+    font-size:17px;
+}
+
+.logo b{
+    color:var(--orange);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:#101012;
+    color:#aaa;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.icon-btn:active{
+    transform:scale(.95);
+}
+
+.icon-btn.active{
+    color:var(--orange);
+    border-color:rgba(255,77,0,.4);
+}
+
+/* ================= PAGE ================= */
+
+.container{
+    width:min(1250px,calc(100% - 28px));
+    margin:auto;
+}
+
+.top-space{
+    height:22px;
+}
+
+.page-title{
+    padding:18px 0 14px;
+}
+
+.page-title h1{
+    font-family:Orbitron,sans-serif;
+    font-size:clamp(25px,5vw,40px);
+    letter-spacing:-1px;
+}
+
+.page-title h1 span{
+    color:var(--orange);
+}
+
+.page-title p{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:13px;
+}
+
+/* ================= PLAYER ================= */
+
+.player{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:
+        linear-gradient(145deg,rgba(255,77,0,.055),rgba(139,44,255,.045)),
+        #09090a;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35),
+        0 0 45px rgba(255,77,0,.035);
+}
+
+.player:after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    right:-180px;
+    top:-200px;
+    background:var(--purple);
+    opacity:.05;
+    filter:blur(80px);
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.player-top{
+    padding:17px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.station-art{
+    flex:0 0 82px;
+    width:82px;
+    height:82px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#171719,#090909);
+    border:1px solid rgba(255,255,255,.08);
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.station-art:before{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            rgba(255,77,0,.3),
+            transparent,
+            rgba(139,44,255,.3),
+            transparent
+        );
+    animation:spin 8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.station-art-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.station-art-content i{
+    color:var(--orange);
+    font-size:23px;
+}
+
+.station-art-content strong{
+    display:block;
+    margin-top:4px;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.player-info{
+    min-width:0;
+    flex:1;
+}
+
+.live-label{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:5px;
+}
+
+.live-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px var(--green);
+}
+
+.player-name{
+    font-size:20px;
+    font-weight:800;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.player-city{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:3px;
+}
+
+.player-status{
+    margin-top:7px;
+    color:#696971;
+    font-size:11px;
+}
+
+.player-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.play-btn{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(135deg,var(--orange),#ff6900);
+    box-shadow:0 0 25px rgba(255,77,0,.2);
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
+}
+
+.play-btn:active{
+    transform:scale(.94);
+}
+
+.control-btn{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    border:1px solid var(--line);
+    background:#111113;
+    color:#aaa;
+    cursor:pointer;
+}
+
+.control-btn:active{
+    transform:scale(.94);
+}
+
+/* ================= FLOWING VISUALIZER ================= */
+
+.visualizer-wrap{
+    padding:0 17px 17px;
+}
+
+.visualizer{
+    height:105px;
+    width:100%;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.06);
+    background:
+        linear-gradient(to top,rgba(255,77,0,.025),transparent),
+        #060607;
+    position:relative;
+    overflow:hidden;
+}
+
+.visualizer canvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.visualizer-label{
+    position:absolute;
+    left:11px;
+    top:9px;
+    z-index:3;
+    font-size:9px;
+    font-weight:800;
+    color:#57575e;
+    letter-spacing:1.2px;
+    pointer-events:none;
+}
+
+.spectrum-off{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    color:#4f4f55;
+    font-size:10px;
+    letter-spacing:.5px;
+    pointer-events:none;
+}
+
+/* ================= SEARCH ================= */
+
+.tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:18px 0 12px;
+}
+
+.search{
+    flex:1;
+    position:relative;
+}
+
+.search i{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#606067;
+    font-size:13px;
+}
+
+.search input{
+    width:100%;
+    height:44px;
+    border-radius:13px;
+    border:1px solid var(--line);
+    background:#0c0c0e;
+    outline:none;
+    color:white;
+    padding:0 15px 0 40px;
+    font-family:inherit;
+    font-size:13px;
+}
+
+.search input:focus{
+    border-color:rgba(255,77,0,.45);
+    box-shadow:0 0 0 3px rgba(255,77,0,.05);
+}
+
+.count{
+    height:44px;
+    padding:0 14px;
+    display:flex;
+    align-items:center;
+    border:1px solid var(--line);
+    background:#0c0c0e;
+    border-radius:13px;
+    color:#77777f;
+    font-size:11px;
+    white-space:nowrap;
+}
+
+/* ================= FILTERS ================= */
+
+.filters{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding:3px 1px 10px;
+    scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+    display:none;
+}
+
+.filter{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:#0c0c0e;
+    color:#77777f;
+    border-radius:999px;
+    padding:9px 14px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:700;
+}
+
+.filter.active{
+    color:white;
+    border-color:rgba(255,77,0,.45);
+    background:rgba(255,77,0,.09);
+}
+
+/* ================= SECTION ================= */
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:10px 0 12px;
+}
+
+.section-head h2{
+    font-size:15px;
+    font-weight:800;
+}
+
+.section-head span{
+    font-size:10px;
+    color:#5e5e66;
+}
+
+/* ================= CARDS ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:10px;
+    padding-bottom:35px;
+}
+
+.card{
+    position:relative;
+    min-width:0;
+    border:1px solid var(--line);
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
+        #0a0a0b;
+    border-radius:16px;
+    padding:12px;
+    transition:.2s ease;
+    overflow:hidden;
+}
+
+.card.active{
+    border-color:rgba(255,77,0,.45);
+    box-shadow:
+        0 0 0 1px rgba(255,77,0,.08),
+        0 12px 35px rgba(255,77,0,.08);
+}
+
+.card-top{
+    display:flex;
+    gap:11px;
+    align-items:center;
+}
+
+.card-logo{
+    width:55px;
+    height:55px;
+    flex:0 0 55px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(145deg,#19191b,#0b0b0c);
+    border:1px solid rgba(255,255,255,.07);
+    position:relative;
+    overflow:hidden;
+}
+
+.card-logo:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        135deg,
+        transparent 40%,
+        rgba(255,77,0,.12)
+    );
+}
+
+.card-logo i{
+    position:relative;
+    z-index:2;
+    color:var(--orange);
+    font-size:18px;
+}
+
+.card-info{
+    min-width:0;
+    flex:1;
+}
+
+.card-title{
+    font-size:13px;
+    font-weight:800;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.card-city{
+    color:#68686f;
+    font-size:10px;
+    margin-top:4px;
+}
+
+.card-meta{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:5px;
+}
+
+.tag{
+    padding:3px 6px;
+    border-radius:5px;
+    background:#151517;
+    color:#77777e;
+    font-size:8px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.tag.live{
+    color:var(--green);
+    background:rgba(36,229,138,.06);
+}
+
+.card-buttons{
+    display:flex;
+    gap:7px;
+    margin-top:11px;
+}
+
+.card-play{
+    flex:1;
+    height:35px;
+    border:1px solid rgba(255,77,0,.18);
+    border-radius:9px;
+    background:rgba(255,77,0,.07);
+    color:#ff7940;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:800;
+}
+
+.card-fav{
+    width:35px;
+    height:35px;
+    border-radius:9px;
+    border:1px solid var(--line);
+    background:#111113;
+    color:#606067;
+    cursor:pointer;
+}
+
+.card-fav.active{
+    color:#ff4d00;
+    border-color:rgba(255,77,0,.3);
+}
+
+.card-error{
+    margin-top:8px;
+    color:#ff657b;
+    font-size:9px;
+    display:none;
+}
+
+.card.error .card-error{
+    display:block;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    padding:45px 20px;
+    text-align:center;
+    border:1px dashed rgba(255,255,255,.08);
+    border-radius:16px;
+    color:#55555d;
+    grid-column:1/-1;
+}
+
+.empty i{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.empty h3{
+    color:#88888f;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.empty p{
+    font-size:10px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    border-top:1px solid var(--line);
+    padding:22px 0 30px;
+    text-align:center;
+    color:#505058;
+    font-size:10px;
+}
+
+.footer b{
+    color:#777;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    z-index:2000;
+    left:50%;
+    bottom:20px;
+    transform:translate(-50%,20px);
+    background:#111113;
+    border:1px solid rgba(255,255,255,.1);
+    color:#ddd;
+    padding:11px 15px;
+    border-radius:12px;
+    font-size:11px;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    max-width:90%;
+    text-align:center;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+.toast.error{
+    border-color:rgba(255,63,95,.3);
+    color:#ff8294;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .header-inner{
+        min-height:62px;
+        padding:10px 13px;
+    }
+
+    .logo span{
+        font-size:14px;
+    }
+
+    .logo-mark{
+        width:35px;
+        height:35px;
+        border-radius:10px;
+    }
+
+    .container{
+        width:min(100% - 20px,1250px);
+    }
+
+    .top-space{
+        height:10px;
+    }
+
+    .page-title{
+        padding:12px 0;
+    }
+
+    .page-title h1{
+        font-size:25px;
+    }
+
+    .player{
+        border-radius:17px;
+    }
+
+    .player-top{
+        padding:12px;
+        gap:11px;
+    }
+
+    .station-art{
+        width:65px;
+        height:65px;
+        flex-basis:65px;
+        border-radius:13px;
+    }
+
+    .player-name{
+        font-size:16px;
+    }
+
+    .player-controls{
+        gap:5px;
+    }
+
+    .control-btn{
+        display:none;
+    }
+
+    .play-btn{
+        width:45px;
+        height:45px;
+        border-radius:13px;
+    }
+
+    .visualizer-wrap{
+        padding:0 12px 12px;
+    }
+
+    .visualizer{
+        height:85px;
+    }
+
+    .tools{
+        gap:7px;
+    }
+
+    .count{
+        padding:0 10px;
+        font-size:9px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+    }
+
+    .card{
+        padding:9px;
+        border-radius:13px;
+    }
+
+    .card-top{
+        gap:8px;
+    }
+
+    .card-logo{
+        width:45px;
+        height:45px;
+        flex-basis:45px;
+    }
+
+    .card-logo i{
+        font-size:15px;
+    }
+
+    .card-title{
+        font-size:11px;
+    }
+
+    .card-city{
+        font-size:9px;
+    }
+
+    .card-buttons{
+        margin-top:8px;
+    }
+
+    .card-play{
+        height:32px;
+        font-size:9px;
+    }
+
+    .card-fav{
+        width:32px;
+        height:32px;
+    }
+}
+
+@media(max-width:370px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-inner">
+
+        <div class="logo">
+            <div class="logo-mark">
+                <i class="fa-solid fa-radio"></i>
+            </div>
+            <span>PHOENIX <b>RADIO</b></span>
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                id="favFilterBtn"
+                title="Favorites"
+                type="button">
+                <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <button
+                class="icon-btn"
+                id="stopHeaderBtn"
+                title="Stop"
+                type="button">
+                <i class="fa-solid fa-stop"></i>
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="top-space"></div>
+
+    <section class="page-title">
+        <h1>Pakistan <span>Radio</span></h1>
+        <p>
+            Live Pakistani radio stations — PHOENIX RADIO
+        </p>
+    </section>
+
+    <!-- PLAYER -->
+
+    <section class="player">
+
+        <div class="player-top">
+
+            <div class="station-art">
+
+                <div class="station-art-content">
+                    <i class="fa-solid fa-radio"></i>
+                    <strong id="playerLogoText">FM</strong>
+                </div>
+
+            </div>
+
+            <div class="player-info">
+
+                <div class="live-label">
+                    <span class="live-dot"></span>
+                    <span id="liveText">READY</span>
+                </div>
+
+                <div
+                    class="player-name"
+                    id="playerName">
+                    Select a station
+                </div>
+
+                <div
+                    class="player-city"
+                    id="playerCity">
+                    Choose a station below
+                </div>
+
+                <div
+                    class="player-status"
+                    id="playerStatus">
+                    PHOENIX RADIO
+                </div>
+
+            </div>
+
+            <div class="player-controls">
+
+                <button
+                    class="control-btn"
+                    id="reloadBtn"
+                    title="Reload stream"
+                    type="button">
+
+                    <i class="fa-solid fa-rotate-right"></i>
+
+                </button>
+
+                <button
+                    class="control-btn"
+                    id="muteBtn"
+                    title="Mute"
+                    type="button">
+
+                    <i class="fa-solid fa-volume-high"></i>
+
+                </button>
+
+                <button
+                    class="play-btn"
+                    id="mainPlayBtn"
+                    title="Play"
+                    type="button">
+
+                    <i class="fa-solid fa-play"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- FLOWING SIGNAL VISUALIZER -->
+
+        <div class="visualizer-wrap">
+
+            <div class="visualizer">
+
+                <div class="visualizer-label">
+                    LIVE AUDIO SIGNAL
+                </div>
+
+                <canvas id="visualizerCanvas"></canvas>
+
+                <div
+                    class="spectrum-off"
+                    id="spectrumOff">
+
+                    Select a station to activate signal
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SEARCH -->
+
+    <div class="tools">
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Search station, city, frequency..."
+                autocomplete="off">
+
+        </div>
+
+        <div
+            class="count"
+            id="stationCount">
+
+            0 stations
+
+        </div>
+
+    </div>
+
+    <!-- FILTERS -->
+
+    <div
+        class="filters"
+        id="filters">
+    </div>
+
+    <!-- STATIONS -->
+
+    <section>
+
+        <div class="section-head">
+
+            <h2>Stations</h2>
+
+            <span id="filterLabel">
+                ALL
+            </span>
+
+        </div>
+
+        <div
+            class="grid"
+            id="stationGrid">
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <b>PHOENIX RADIO</b>
+    • Pakistan Radio Player
+
+    <br>
+
+    <span>
+        Stream availability depends on the broadcaster and network.
+    </span>
+
+</footer>
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+<audio
+    id="audio"
+    preload="none"
+    playsinline>
+</audio>
+
+<script>
+
+/* =========================================================
+   PHOENIX RADIO
+   =========================================================
+   Improved version
+
+   Main changes:
+   • Flowing right → left signal visualizer
+   • Stream timeout
+   • One automatic retry
+   • Stalled/waiting handling
+   • Safer AudioContext
+   • Visualizer pauses when page is hidden
+   • No unnecessary station-grid redraw during playback
+========================================================= */
+
+
+/* =========================================================
+   STATIONS
+========================================================= */
+
+const stations = [
+
+    {
+        id:"fm101-karachi",
+        name:"FM 101 Karachi",
+        city:"Karachi",
+        province:"Sindh",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:8048/stream"
+    },
+
+    {
+        id:"fm93-karachi",
+        name:"FM 93 Karachi",
+        city:"Karachi",
+        province:"Sindh",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:7022/stream"
+    },
+
+    {
+        id:"radio-pakistan-mw-karachi",
+        name:"Radio Pakistan Karachi",
+        city:"Karachi",
+        province:"Sindh",
+        category:"News",
+        frequency:"MW 639",
+        icon:"fa-tower-broadcast",
+        stream:"https://whmsonic.radio.gov.pk:7000/MW639khi"
+    },
+
+    {
+        id:"hum-fm",
+        name:"Hum FM 106.2",
+        city:"Karachi",
+        province:"Sindh",
+        category:"Music",
+        frequency:"106.2 FM",
+        icon:"fa-music",
+        stream:"https://server.mediacast4u.stream/8002/stream"
+    },
+
+    {
+        id:"radio-one",
+        name:"Radio One FM 91",
+        city:"Karachi",
+        province:"Sindh",
+        category:"Music",
+        frequency:"FM 91",
+        icon:"fa-headphones",
+        stream:"https://cc.vmakerhost.com/proxy/karachi?mp=/stream"
+    },
+
+    {
+        id:"fm101-islamabad",
+        name:"FM 101 Islamabad",
+        city:"Islamabad",
+        province:"Islamabad",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:7008/stream"
+    },
+
+    {
+        id:"radio-pakistan-islamabad",
+        name:"Radio Pakistan Islamabad",
+        city:"Islamabad",
+        province:"Islamabad",
+        category:"News",
+        frequency:"National",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:7003/stream"
+    },
+
+    {
+        id:"cityfm-islamabad",
+        name:"CityFM89",
+        city:"Islamabad",
+        province:"Islamabad",
+        category:"Music",
+        frequency:"89 FM",
+        icon:"fa-headphones",
+        stream:"https://radio.cityfm89.com/stream"
+    },
+
+    {
+        id:"saut-ul-quran",
+        name:"Saut-ul-Quran",
+        city:"Islamabad",
+        province:"Islamabad",
+        category:"Islamic",
+        frequency:"FM 93.4",
+        icon:"fa-mosque",
+        stream:"https://whmsonic.radio.gov.pk:7002/stream"
+    },
+
+    {
+        id:"fm93-lahore",
+        name:"FM 93 Lahore",
+        city:"Lahore",
+        province:"Punjab",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8088/stream"
+    },
+
+    {
+        id:"radio-pakistan-lahore",
+        name:"Radio Pakistan Lahore",
+        city:"Lahore",
+        province:"Punjab",
+        category:"News",
+        frequency:"Lahore",
+        icon:"fa-tower-broadcast",
+        stream:"https://whmsonic.radio.gov.pk:8026/relay"
+    },
+
+    {
+        id:"mera-fm-lahore",
+        name:"Mera FM 107.4 Lahore",
+        city:"Lahore",
+        province:"Punjab",
+        category:"Music",
+        frequency:"107.4 FM",
+        icon:"fa-music",
+        stream:"https://samaalhr107-itelservices.radioca.st/stream"
+    },
+
+    {
+        id:"fm93-multan",
+        name:"FM 93 Multan",
+        city:"Multan",
+        province:"Punjab",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8032/stream"
+    },
+
+    {
+        id:"radio-pakistan-multan",
+        name:"Radio Pakistan Multan",
+        city:"Multan",
+        province:"Punjab",
+        category:"News",
+        frequency:"Multan",
+        icon:"fa-tower-broadcast",
+        stream:"https://whmsonic.radio.gov.pk:8034/stream"
+    },
+
+    {
+        id:"fm93-rawalpindi",
+        name:"FM 93 Rawalpindi",
+        city:"Rawalpindi",
+        province:"Punjab",
+        category:"News",
+        frequency:"FM 93.5",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8036/relay"
+    },
+
+    {
+        id:"fm93-faisalabad",
+        name:"FM 93 Faisalabad",
+        city:"Faisalabad",
+        province:"Punjab",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8022/relay"
+    },
+
+    {
+        id:"fm93-mianwali",
+        name:"FM 93 Mianwali",
+        city:"Mianwali",
+        province:"Punjab",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8028/relay"
+    },
+
+    {
+        id:"fm101-sargodha",
+        name:"FM 101 Sargodha",
+        city:"Sargodha",
+        province:"Punjab",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:8040/relay"
+    },
+
+    {
+        id:"fm101-khairpur",
+        name:"FM 101 Khairpur",
+        city:"Khairpur",
+        province:"Sindh",
+        category:"News",
+        frequency:"FM 101",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8054/stream"
+    },
+
+    {
+        id:"fm101-larkana",
+        name:"FM 101 Larkana",
+        city:"Larkana",
+        province:"Sindh",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:8050/stream"
+    },
+
+    {
+        id:"fm101-mithi",
+        name:"FM 101 Mithi",
+        city:"Mithi",
+        province:"Sindh",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:8052/stream"
+    },
+
+    {
+        id:"radio-quetta-mw",
+        name:"Radio Pakistan Quetta",
+        city:"Quetta",
+        province:"Balochistan",
+        category:"News",
+        frequency:"Quetta",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8060/relay"
+    },
+
+    {
+        id:"peshawar-101",
+        name:"FM 101 Peshawar",
+        city:"Peshawar",
+        province:"KPK",
+        category:"Music",
+        frequency:"FM 101",
+        icon:"fa-music",
+        stream:"https://whmsonic.radio.gov.pk:8070/relay"
+    },
+
+    {
+        id:"peshawar-mw",
+        name:"Radio Pakistan Peshawar",
+        city:"Peshawar",
+        province:"KPK",
+        category:"News",
+        frequency:"Peshawar",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8072/relay"
+    },
+
+    {
+        id:"fm93-chitral",
+        name:"FM 93 Chitral",
+        city:"Chitral",
+        province:"KPK",
+        category:"News",
+        frequency:"FM 93",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8066/relay"
+    },
+
+    {
+        id:"hyderabad-mw",
+        name:"Radio Pakistan Hyderabad",
+        city:"Hyderabad",
+        province:"Sindh",
+        category:"News",
+        frequency:"MW 1008",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8042/stream"
+    },
+
+    {
+        id:"di-khan",
+        name:"Radio Pakistan D.I. Khan",
+        city:"D.I. Khan",
+        province:"KPK",
+        category:"News",
+        frequency:"MW 711",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:7000/Dikhan"
+    },
+
+    {
+        id:"world-service",
+        name:"Radio Pakistan World Service",
+        city:"Islamabad",
+        province:"Islamabad",
+        category:"World",
+        frequency:"World Service",
+        icon:"fa-globe",
+        stream:"https://whmsonic.radio.gov.pk:7005/stream"
+    },
+
+    {
+        id:"bahawalpur",
+        name:"Radio Pakistan Bahawalpur",
+        city:"Bahawalpur",
+        province:"Punjab",
+        category:"News",
+        frequency:"Bahawalpur",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8088/stream"
+    },
+
+    {
+        id:"radio-mirpur",
+        name:"Radio Mirpur",
+        city:"Mirpur",
+        province:"AJK",
+        category:"News",
+        frequency:"Radio",
+        icon:"fa-radio",
+        stream:"https://whmsonic.radio.gov.pk:8074/?type=http&nocache=9"
+    }
+
+];
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const audio =
+    document.getElementById("audio");
+
+const stationGrid =
+    document.getElementById("stationGrid");
+
+const filters =
+    document.getElementById("filters");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const stationCount =
+    document.getElementById("stationCount");
+
+const playerName =
+    document.getElementById("playerName");
+
+const playerCity =
+    document.getElementById("playerCity");
+
+const playerStatus =
+    document.getElementById("playerStatus");
+
+const liveText =
+    document.getElementById("liveText");
+
+const playerLogoText =
+    document.getElementById("playerLogoText");
+
+const mainPlayBtn =
+    document.getElementById("mainPlayBtn");
+
+const reloadBtn =
+    document.getElementById("reloadBtn");
+
+const muteBtn =
+    document.getElementById("muteBtn");
+
+const stopHeaderBtn =
+    document.getElementById("stopHeaderBtn");
+
+const spectrumOff =
+    document.getElementById("spectrumOff");
+
+const canvas =
+    document.getElementById("visualizerCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+const toast =
+    document.getElementById("toast");
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentStation = null;
+
+let activeFilter = "All";
+
+let favoritesOnly = false;
+
+let favorites = [];
+
+try{
+
+    favorites =
+        JSON.parse(
+            localStorage.getItem(
+                "phoenix_radio_favorites"
+            ) || "[]"
+        );
+
+    if(!Array.isArray(favorites)){
+        favorites = [];
+    }
+
+}catch{
+
+    favorites = [];
+
+}
+
+let connectionTimer = null;
+
+let retryTimer = null;
+
+let connectionAttempt = 0;
+
+let playbackToken = 0;
+
+let pageVisible = true;
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function saveFavorites(){
+
+    try{
+
+        localStorage.setItem(
+            "phoenix_radio_favorites",
+            JSON.stringify(favorites)
+        );
+
+    }catch(error){
+
+        console.warn(
+            "Could not save favorites",
+            error
+        );
+
+    }
+
+}
+
+function isFavorite(id){
+
+    return favorites.includes(id);
+
+}
+
+function toggleFavorite(id){
+
+    if(isFavorite(id)){
+
+        favorites =
+            favorites.filter(
+                x => x !== id
+            );
+
+        showToast(
+            "Removed from favorites"
+        );
+
+    }else{
+
+        favorites.push(id);
+
+        showToast(
+            "Added to favorites"
+        );
+
+    }
+
+    saveFavorites();
+
+    renderFilters();
+
+    renderStations();
+
+}
+
+
+/* =========================================================
+   CITIES
+========================================================= */
+
+function getPlayableCities(){
+
+    return [
+        ...new Set(
+            stations
+                .filter(
+                    station =>
+                        station.stream &&
+                        station.stream.startsWith("https://")
+                )
+                .map(
+                    station => station.city
+                )
+        )
+    ].sort();
+
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+function renderFilters(){
+
+    const cities =
+        getPlayableCities();
+
+    const categoryFilters = [
+        "All",
+        "Favorites",
+        "Music",
+        "News",
+        "Islamic",
+        "World"
+    ];
+
+    filters.innerHTML = "";
+
+    categoryFilters.forEach(filter => {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "filter " +
+            (
+                activeFilter === filter &&
+                !favoritesOnly
+                    ? "active"
+                    : ""
+            );
+
+        button.textContent =
+            filter;
+
+        button.onclick = () => {
+
+            favoritesOnly =
+                filter === "Favorites";
+
+            activeFilter =
+                filter;
+
+            renderFilters();
+
+            renderStations();
+
+        };
+
+        filters.appendChild(button);
+
+    });
+
+    cities.forEach(city => {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "filter " +
+            (
+                activeFilter === city &&
+                !favoritesOnly
+                    ? "active"
+                    : ""
+            );
+
+        button.textContent =
+            city;
+
+        button.onclick = () => {
+
+            favoritesOnly = false;
+
+            activeFilter = city;
+
+            renderFilters();
+
+            renderStations();
+
+        };
+
+        filters.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================================================
+   FILTER STATIONS
+========================================================= */
+
+function getFilteredStations(){
+
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    return stations.filter(station => {
+
+        const matchesSearch =
+            !query ||
+            station.name
+                .toLowerCase()
+                .includes(query) ||
+
+            station.city
+                .toLowerCase()
+                .includes(query) ||
+
+            station.frequency
+                .toLowerCase()
+                .includes(query) ||
+
+            station.category
+                .toLowerCase()
+                .includes(query);
+
+        if(!matchesSearch){
+            return false;
+        }
+
+        if(favoritesOnly){
+            return isFavorite(
+                station.id
+            );
+        }
+
+        if(activeFilter === "All"){
+            return true;
+        }
+
+        if(
+            [
+                "Music",
+                "News",
+                "Islamic",
+                "World"
+            ].includes(activeFilter)
+        ){
+
+            return station.category ===
+                activeFilter;
+
+        }
+
+        return station.city ===
+            activeFilter;
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDER STATIONS
+========================================================= */
+
+function renderStations(){
+
+    const list =
+        getFilteredStations();
+
+    stationGrid.innerHTML = "";
+
+    stationCount.textContent =
+        `${list.length} station${list.length === 1 ? "" : "s"}`;
+
+    document.getElementById(
+        "filterLabel"
+    ).textContent =
+        favoritesOnly
+            ? "FAVORITES"
+            : activeFilter.toUpperCase();
+
+    if(!list.length){
+
+        stationGrid.innerHTML = `
+            <div class="empty">
+                <i class="fa-solid fa-radio"></i>
+                <h3>No stations found</h3>
+                <p>Try another city, category or search term.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const fragment =
+        document.createDocumentFragment();
+
+    list.forEach(station => {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "card " +
+            (
+                currentStation &&
+                currentStation.id === station.id
+                    ? "active"
+                    : ""
+            );
+
+        card.dataset.id =
+            station.id;
+
+        const fav =
+            isFavorite(station.id);
+
+        card.innerHTML = `
+
+            <div class="card-top">
+
+                <div class="card-logo">
+                    <i class="fa-solid ${station.icon}"></i>
+                </div>
+
+                <div class="card-info">
+
+                    <div class="card-title">
+                        ${escapeHTML(station.name)}
+                    </div>
+
+                    <div class="card-city">
+                        ${escapeHTML(station.city)}
+                        •
+                        ${escapeHTML(station.frequency)}
+                    </div>
+
+                    <div class="card-meta">
+
+                        <span class="tag live">
+                            LIVE
+                        </span>
+
+                        <span class="tag">
+                            ${escapeHTML(station.category)}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-buttons">
+
+                <button
+                    class="card-play"
+                    type="button">
+
+                    <i class="fa-solid fa-play"></i>
+                    PLAY
+
+                </button>
+
+                <button
+                    class="card-fav ${fav ? "active" : ""}"
+                    title="Favorite"
+                    type="button">
+
+                    <i class="fa-${fav ? "solid" : "regular"} fa-heart"></i>
+
+                </button>
+
+            </div>
+
+            <div class="card-error">
+                Stream could not be loaded.
+            </div>
+        `;
+
+        card.querySelector(
+            ".card-play"
+        ).onclick = () => {
+
+            playStation(station);
+
+        };
+
+        card.querySelector(
+            ".card-fav"
+        ).onclick = () => {
+
+            toggleFavorite(
+                station.id
+            );
+
+        };
+
+        fragment.appendChild(card);
+
+    });
+
+    stationGrid.appendChild(fragment);
+
+}
+
+
+/* =========================================================
+   CLEAR TIMERS
+========================================================= */
+
+function clearStreamTimers(){
+
+    if(connectionTimer){
+
+        clearTimeout(
+            connectionTimer
+        );
+
+        connectionTimer = null;
+
+    }
+
+    if(retryTimer){
+
+        clearTimeout(
+            retryTimer
+        );
+
+        retryTimer = null;
+
+    }
+
+}
+
+
+/* =========================================================
+   PLAY STATION
+========================================================= */
+
+async function playStation(
+    station,
+    isRetry = false
+){
+
+    if(!station || !station.stream){
+
+        showToast(
+            "This station has no playable stream.",
+            true
+        );
+
+        return;
+
+    }
+
+    const token =
+        ++playbackToken;
+
+    clearStreamTimers();
+
+    currentStation =
+        station;
+
+    connectionAttempt =
+        isRetry
+            ? connectionAttempt
+            : 0;
+
+    clearCardErrors();
+
+    playerName.textContent =
+        station.name;
+
+    playerCity.textContent =
+        `${station.city} • ${station.frequency}`;
+
+    playerLogoText.textContent =
+        station.frequency
+            .replace(/\s/g,"")
+            .slice(0,5);
+
+    playerStatus.textContent =
+        "Connecting to live stream...";
+
+    liveText.textContent =
+        "CONNECTING";
+
+    spectrumOff.textContent =
+        "Waiting for live signal...";
+
+    spectrumOff.style.display =
+        "grid";
+
+    mainPlayBtn.innerHTML =
+        `<i class="fa-solid fa-spinner fa-spin"></i>`;
+
+    /*
+        Stop the previous stream completely.
+    */
+
+    audio.pause();
+
+    audio.removeAttribute("src");
+
+    try{
+
+        audio.load();
+
+    }catch{
+
+        /* ignore */
+
+    }
+
+    /*
+        Important:
+        Do not create/recreate the WebAudio
+        graph every time a station changes.
+    */
+
+    if(
+        audioAnalyser &&
+        audioContext &&
+        audioContext.state === "suspended"
+    ){
+
+        try{
+            await audioContext.resume();
+        }catch{
+            /* visualizer can work without analyser */
+        }
+
+    }
+
+    /*
+        Give the browser a fresh source.
+    */
+
+    audio.src =
+        station.stream;
+
+    audio.load();
+
+    /*
+        Connection watchdog.
+
+        If the broadcaster never responds,
+        the page will not remain CONNECTING forever.
+    */
+
+    connectionTimer =
+        setTimeout(() => {
+
+            if(
+                token !== playbackToken ||
+                !currentStation ||
+                currentStation.id !== station.id
+            ){
+
+                return;
+
+            }
+
+            handleStreamTimeout(
+                station,
+                token
+            );
+
+        },15000);
+
+    try{
+
+        /*
+            Start playback.
+
+            Audio playback is independent from
+            the visualizer. If the analyser isn't
+            available, the radio can still play.
+        */
+
+        await audio.play();
+
+        if(
+            token !== playbackToken
+        ){
+            return;
+        }
+
+        /*
+            Try the analyser AFTER playback starts.
+            This prevents analyser problems from
+            stopping the actual radio.
+        */
+
+        ensureAudioAnalyser();
+
+    }catch(error){
+
+        if(
+            token !== playbackToken
+        ){
+            return;
+        }
+
+        console.warn(
+            "Playback error:",
+            error
+        );
+
+        handlePlaybackError(
+            station,
+            token
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STREAM TIMEOUT
+========================================================= */
+
+function handleStreamTimeout(
+    station,
+    token
+){
+
+    if(
+        token !== playbackToken ||
+        !currentStation ||
+        currentStation.id !== station.id
+    ){
+
+        return;
+
+    }
+
+    audio.pause();
+
+    playerStatus.textContent =
+        "Stream is taking too long to respond";
+
+    liveText.textContent =
+        "TIMEOUT";
+
+    mainPlayBtn.innerHTML =
+        `<i class="fa-solid fa-play"></i>`;
+
+    spectrumOff.textContent =
+        "Stream timed out";
+
+    spectrumOff.style.display =
+        "grid";
+
+    /*
+        Retry once automatically.
+    */
+
+    if(connectionAttempt < 1){
+
+        connectionAttempt++;
+
+        playerStatus.textContent =
+            "Retrying stream...";
+
+        retryTimer =
+            setTimeout(() => {
+
+                if(
+                    token !== playbackToken
+                ){
+                    return;
+                }
+
+                playStation(
+                    station,
+                    true
+                );
+
+            },1500);
+
+        return;
+
+    }
+
+    markCardError(
+        station.id,
+        "Stream did not respond."
+    );
+
+    showToast(
+        "This station did not respond.",
+        true
+    );
+
+}
+
+
+/* =========================================================
+   PLAYBACK ERROR
+========================================================= */
+
+function handlePlaybackError(
+    station,
+    token
+){
+
+    if(
+        token !== playbackToken
+    ){
+        return;
+    }
+
+    clearStreamTimers();
+
+    playerStatus.textContent =
+        "Stream unavailable";
+
+    liveText.textContent =
+        "ERROR";
+
+    mainPlayBtn.innerHTML =
+        `<i class="fa-solid fa-play"></i>`;
+
+    spectrumOff.textContent =
+        "Stream unavailable";
+
+    spectrumOff.style.display =
+        "grid";
+
+    markCardError(
+        station.id,
+        "The broadcaster stream could not be played."
+    );
+
+    showToast(
+        "The stream could not be played.",
+        true
+    );
+
+}
+
+
+/* =========================================================
+   AUDIO EVENTS
+========================================================= */
+
+audio.addEventListener(
+    "playing",
+    () => {
+
+        clearStreamTimers();
+
+        if(!currentStation){
+            return;
+        }
+
+        liveText.textContent =
+            "LIVE";
+
+        playerStatus.textContent =
+            `Live • ${currentStation.frequency}`;
+
+        mainPlayBtn.innerHTML =
+            `<i class="fa-solid fa-pause"></i>`;
+
+        spectrumOff.style.display =
+            "none";
+
+        connectionAttempt = 0;
+
+    }
+);
+
+
+audio.addEventListener(
+    "canplay",
+    () => {
+
+        if(!currentStation){
+            return;
+        }
+
+        playerStatus.textContent =
+            "Buffer ready • connecting...";
+
+    }
+);
+
+
+audio.addEventListener(
+    "waiting",
+    () => {
+
+        if(
+            currentStation &&
+            !audio.paused
+        ){
+
+            playerStatus.textContent =
+                "Buffering live stream...";
+
+        }
+
+    }
+);
+
+
+audio.addEventListener(
+    "stalled",
+    () => {
+
+        if(
+            currentStation &&
+            !audio.paused
+        ){
+
+            playerStatus.textContent =
+                "Connection stalled...";
+
+        }
+
+    }
+);
+
+
+audio.addEventListener(
+    "error",
+    () => {
+
+        if(!currentStation){
+            return;
+        }
+
+        clearStreamTimers();
+
+        playerStatus.textContent =
+            "Stream unavailable";
+
+        liveText.textContent =
+            "ERROR";
+
+        mainPlayBtn.innerHTML =
+            `<i class="fa-solid fa-play"></i>`;
+
+        spectrumOff.textContent =
+            "Stream unavailable";
+
+        spectrumOff.style.display =
+            "grid";
+
+        markCardError(
+            currentStation.id,
+            "The broadcaster stream is unavailable."
+        );
+
+    }
+);
+
+
+audio.addEventListener(
+    "pause",
+    () => {
+
+        if(!currentStation){
+            return;
+        }
+
+        /*
+            Don't overwrite ERROR/TIMEOUT state.
+        */
+
+        if(
+            liveText.textContent === "ERROR" ||
+            liveText.textContent === "TIMEOUT"
+        ){
+
+            return;
+
+        }
+
+        liveText.textContent =
+            "PAUSED";
+
+        playerStatus.textContent =
+            "Playback paused";
+
+        mainPlayBtn.innerHTML =
+            `<i class="fa-solid fa-play"></i>`;
+
+    }
+);
+
+
+/* =========================================================
+   MAIN PLAY BUTTON
+========================================================= */
+
+mainPlayBtn.onclick =
+    async () => {
+
+        if(!currentStation){
+
+            showToast(
+                "Choose a station first."
+            );
+
+            return;
+
+        }
+
+        if(audio.paused){
+
+            try{
+
+                if(
+                    audioContext &&
+                    audioContext.state === "suspended"
+                ){
+
+                    await audioContext.resume();
+
+                }
+
+                await audio.play();
+
+            }catch(error){
+
+                console.warn(
+                    error
+                );
+
+                showToast(
+                    "Unable to start this stream.",
+                    true
+                );
+
+            }
+
+        }else{
+
+            audio.pause();
+
+        }
+
+    };
+
+
+/* =========================================================
+   STOP RADIO
+========================================================= */
+
+function stopRadio(){
+
+    playbackToken++;
+
+    clearStreamTimers();
+
+    audio.pause();
+
+    audio.removeAttribute(
+        "src"
+    );
+
+    try{
+
+        audio.load();
+
+    }catch{
+
+        /* ignore */
+
+    }
+
+    currentStation =
+        null;
+
+    playerName.textContent =
+        "Select a station";
+
+    playerCity.textContent =
+        "Choose a station below";
+
+    playerStatus.textContent =
+        "PHOENIX RADIO";
+
+    liveText.textContent =
+        "READY";
+
+    playerLogoText.textContent =
+        "FM";
+
+    mainPlayBtn.innerHTML =
+        `<i class="fa-solid fa-play"></i>`;
+
+    spectrumOff.textContent =
+        "Select a station to activate signal";
+
+    spectrumOff.style.display =
+        "grid";
+
+    resetSignalHistory();
+
+    renderStations();
+
+}
+
+stopHeaderBtn.onclick =
+    stopRadio;
+
+
+/* =========================================================
+   RELOAD
+========================================================= */
+
+reloadBtn.onclick =
+    () => {
+
+        if(!currentStation){
+
+            showToast(
+                "No station selected."
+            );
+
+            return;
+
+        }
+
+        const station =
+            currentStation;
+
+        connectionAttempt = 0;
+
+        showToast(
+            "Reloading stream..."
+        );
+
+        playStation(
+            station
+        );
+
+    };
+
+
+/* =========================================================
+   MUTE
+========================================================= */
+
+muteBtn.onclick =
+    () => {
+
+        audio.muted =
+            !audio.muted;
+
+        muteBtn.innerHTML =
+            audio.muted
+                ? `<i class="fa-solid fa-volume-xmark"></i>`
+                : `<i class="fa-solid fa-volume-high"></i>`;
+
+    };
+
+
+/* =========================================================
+   FAVORITES HEADER
+========================================================= */
+
+document.getElementById(
+    "favFilterBtn"
+).onclick = () => {
+
+    favoritesOnly = true;
+
+    activeFilter =
+        "Favorites";
+
+    renderFilters();
+
+    renderStations();
+
+};
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        renderStations();
+
+    }
+);
+
+
+/* =========================================================
+   AUDIO ANALYSER
+========================================================= */
+
+let audioContext = null;
+
+let analyser = null;
+
+let sourceNode = null;
+
+let audioAnalyser = false;
+
+let frequencyData = null;
+
+function ensureAudioAnalyser(){
+
+    if(audioAnalyser){
+        return true;
+    }
+
+    try{
+
+        const AudioCtx =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(!AudioCtx){
+            return false;
+        }
+
+        if(!audioContext){
+
+            audioContext =
+                new AudioCtx();
+
+        }
+
+        if(
+            audioContext.state ===
+            "suspended"
+        ){
+
+            audioContext.resume()
+                .catch(() => {});
+
+        }
+
+        /*
+            The analyser is optional.
+
+            If a broadcaster doesn't provide the
+            required CORS headers, playback must
+            not be sacrificed for the visualizer.
+        */
+
+        analyser =
+            audioContext.createAnalyser();
+
+        analyser.fftSize =
+            512;
+
+        analyser.smoothingTimeConstant =
+            .72;
+
+        analyser.minDecibels =
+            -90;
+
+        analyser.maxDecibels =
+            -10;
+
+        frequencyData =
+            new Uint8Array(
+                analyser.frequencyBinCount
+            );
+
+        sourceNode =
+            audioContext.createMediaElementSource(
+                audio
+            );
+
+        sourceNode.connect(
+            analyser
+        );
+
+        analyser.connect(
+            audioContext.destination
+        );
+
+        audioAnalyser =
+            true;
+
+        return true;
+
+    }catch(error){
+
+        console.warn(
+            "Spectrum analyser unavailable:",
+            error
+        );
+
+        /*
+            Do NOT stop radio playback.
+        */
+
+        audioAnalyser =
+            false;
+
+        analyser =
+            null;
+
+        frequencyData =
+            null;
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+function resizeCanvas(){
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const ratio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        Math.max(
+            1,
+            Math.floor(
+                rect.width * ratio
+            )
+        );
+
+    canvas.height =
+        Math.max(
+            1,
+            Math.floor(
+                rect.height * ratio
+            )
+        );
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+    resetSignalHistory();
+
+}
+
+window.addEventListener(
+    "resize",
+    resizeCanvas,
+    {passive:true}
+);
+
+
+/* =========================================================
+   FLOWING SIGNAL VISUALIZER
+   =========================================================
+   This is NOT the old static equalizer.
+
+   New signal values are generated on the RIGHT.
+
+   Every frame:
+       old bars move LEFT
+       new bar enters RIGHT
+
+   Therefore the visual signal travels:
+
+                     ← ← ← ← ← ←
+       NEW  █
+            ███
+             ██
+       █████ ███
+       ███     █
+                     OLD
+========================================================= */
+
+let signalHistory = [];
+
+let lastSignalTime = 0;
+
+const signalSpeed =
+    38;
+
+function resetSignalHistory(){
+
+    signalHistory = [];
+
+    const width =
+        canvas.clientWidth || 300;
+
+    const columns =
+        Math.ceil(
+            width / 4
+        ) + 5;
+
+    for(
+        let i = 0;
+        i < columns;
+        i++
+    ){
+
+        signalHistory.push(0);
+
+    }
+
+}
+
+
+function getAudioLevel(){
+
+    if(
+        !audioAnalyser ||
+        !analyser ||
+        !frequencyData ||
+        audio.paused
+    ){
+
+        return null;
+
+    }
+
+    try{
+
+        analyser.getByteFrequencyData(
+            frequencyData
+        );
+
+    }catch{
+
+        return null;
+
+    }
+
+    /*
+        Use a weighted section of the FFT.
+
+        This gives the signal more natural movement
+        than simply taking one FFT bin.
+    */
+
+    let total = 0;
+
+    let weightTotal = 0;
+
+    const length =
+        frequencyData.length;
+
+    for(
+        let i = 2;
+        i < length * .72;
+        i++
+    ){
+
+        const value =
+            frequencyData[i];
+
+        const weight =
+            i < length * .12
+                ? 1.35
+                : 1;
+
+        total +=
+            value * weight;
+
+        weightTotal +=
+            weight;
+
+    }
+
+    if(!weightTotal){
+        return 0;
+    }
+
+    return Math.min(
+        1,
+        total /
+        weightTotal /
+        255
+    );
+
+}
+
+
+function drawIdleSignal(
+    width,
+    height
+){
+
+    /*
+        Idle state is almost completely still.
+        This prevents the app from looking like
+        fake audio when nothing is playing.
+    */
+
+    const y =
+        height - 10;
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.06)";
+
+    ctx.fillRect(
+        0,
+        y,
+        width,
+        1
+    );
+
+}
+
+
+function drawSignalFrame(
+    time
+){
+
+    /*
+        Don't render at all when page is hidden.
+        This reduces Android WebView CPU usage.
+    */
+
+    if(!pageVisible){
+
+        requestAnimationFrame(
+            drawSignalFrame
+        );
+
+        return;
+
+    }
+
+    const width =
+        canvas.clientWidth;
+
+    const height =
+        canvas.clientHeight;
+
+    if(
+        !width ||
+        !height
+    ){
+
+        requestAnimationFrame(
+            drawSignalFrame
+        );
+
+        return;
+
+    }
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    const level =
+        getAudioLevel();
+
+    if(
+        signalHistory.length === 0 ||
+        Math.abs(
+            signalHistory.length -
+            Math.ceil(width / 4)
+        ) > 15
+    ){
+
+        resetSignalHistory();
+
+    }
+
+    /*
+        Add a new signal column every
+        few milliseconds.
+
+        This is what creates the actual
+        right-to-left movement.
+    */
+
+    if(
+        level !== null &&
+        time - lastSignalTime >= signalSpeed
+    ){
+
+        lastSignalTime =
+            time;
+
+        const randomVariation =
+            .82 +
+            Math.random() * .30;
+
+        let newValue =
+            level *
+            randomVariation;
+
+        /*
+            Give quiet audio a small natural
+            response but don't create huge
+            fake bars.
+        */
+
+        newValue =
+            Math.min(
+                1,
+                newValue * 1.35
+            );
+
+        signalHistory.push(
+            newValue
+        );
+
+        signalHistory.shift();
+
+    }
+
+    /*
+        If there is no audio, keep the history
+        slowly fading instead of continuously
+        generating fake movement.
+    */
+
+    if(level === null){
+
+        for(
+            let i = 0;
+            i < signalHistory.length;
+            i++
+        ){
+
+            signalHistory[i] *= .94;
+
+        }
+
+        drawIdleSignal(
+            width,
+            height
+        );
+
+    }
+
+    const columnWidth = 3;
+
+    const gap = 1;
+
+    const totalWidth =
+        columnWidth + gap;
+
+    const baseline =
+        height - 10;
+
+    /*
+        Draw oldest signal on the LEFT
+        and newest signal on the RIGHT.
+    */
+
+    for(
+        let i = 0;
+        i < signalHistory.length;
+        i++
+    ){
+
+        const value =
+            signalHistory[i];
+
+        if(value <= .008){
+            continue;
+        }
+
+        const barHeight =
+            Math.max(
+                2,
+                value *
+                (height - 24)
+            );
+
+        const x =
+            i * totalWidth;
+
+        if(x > width){
+            continue;
+        }
+
+        const y =
+            baseline -
+            barHeight;
+
+        const gradient =
+            ctx.createLinearGradient(
+                0,
+                y,
+                0,
+                baseline
+            );
+
+        gradient.addColorStop(
+            0,
+            "#ffffff"
+        );
+
+        gradient.addColorStop(
+            .25,
+            "#ff7a00"
+        );
+
+        gradient.addColorStop(
+            .65,
+            "#ff4d00"
+        );
+
+        gradient.addColorStop(
+            1,
+            "#8b2cff"
+        );
+
+        ctx.fillStyle =
+            gradient;
+
+        ctx.shadowBlur =
+            7;
+
+        ctx.shadowColor =
+            "rgba(255,77,0,.30)";
+
+        roundRect(
+            ctx,
+            x,
+            y,
+            columnWidth,
+            barHeight,
+            2
+        );
+
+        ctx.fill();
+
+    }
+
+    ctx.shadowBlur = 0;
+
+    /*
+        Baseline.
+    */
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.045)";
+
+    ctx.fillRect(
+        0,
+        baseline,
+        width,
+        1
+    );
+
+    requestAnimationFrame(
+        drawSignalFrame
+    );
+
+}
+
+
+/* =========================================================
+   ROUNDED RECTANGLE
+========================================================= */
+
+function roundRect(
+    context,
+    x,
+    y,
+    width,
+    height,
+    radius
+){
+
+    context.beginPath();
+
+    context.moveTo(
+        x + radius,
+        y
+    );
+
+    context.arcTo(
+        x + width,
+        y,
+        x + width,
+        y + height,
+        radius
+    );
+
+    context.arcTo(
+        x + width,
+        y + height,
+        x,
+        y + height,
+        radius
+    );
+
+    context.arcTo(
+        x,
+        y + height,
+        x,
+        y,
+        radius
+    );
+
+    context.arcTo(
+        x,
+        y,
+        x + width,
+        y,
+        radius
+    );
+
+    context.closePath();
+
+}
+
+
+/* =========================================================
+   PAGE VISIBILITY
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        pageVisible =
+            !document.hidden;
+
+        if(pageVisible){
+
+            /*
+                Reset the visualizer timing when
+                returning to the app so it doesn't
+                try to process a huge time jump.
+            */
+
+            lastSignalTime =
+                performance.now();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CARD ERRORS
+========================================================= */
+
+function markCardError(
+    id,
+    message
+){
+
+    const card =
+        Array.from(
+            document.querySelectorAll(".card")
+        ).find(
+            item =>
+                item.dataset.id === id
+        );
+
+    if(!card){
+        return;
+    }
+
+    card.classList.add(
+        "error"
+    );
+
+    const error =
+        card.querySelector(
+            ".card-error"
+        );
+
+    if(error){
+
+        error.textContent =
+            message ||
+            "Stream unavailable.";
+
+    }
+
+}
+
+
+function clearCardErrors(){
+
+    document
+        .querySelectorAll(
+            ".card.error"
+        )
+        .forEach(
+            card =>
+                card.classList.remove(
+                    "error"
+                )
+        );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer = null;
+
+function showToast(
+    message,
+    error = false
+){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast show" +
+        (
+            error
+                ? " error"
+                : ""
+        );
+
+    clearTimeout(
+        toastTimer
+    );
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.className =
+                    "toast";
+
+            },
+            2800
+        );
+
+}
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+resizeCanvas();
+
+renderFilters();
+
+renderStations();
+
+resetSignalHistory();
+
+requestAnimationFrame(
+    drawSignalFrame
+);
+
+</script>
+
+</body>
+</html>
